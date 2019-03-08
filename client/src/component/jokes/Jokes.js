@@ -1,12 +1,7 @@
 import React from 'react';
 
-class Jokes extends React.Component {
-
-    render() {
-        return (
-            <div></div>
-        )
-    }
+const Jokes = props => {
+    console.log(props)
 }
 
 export default Jokes;
