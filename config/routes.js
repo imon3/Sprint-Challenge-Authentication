@@ -28,6 +28,26 @@ function register(req, res) {
 
 function login(req, res) {
   // implement user login
+  let { username, password } = req.body;
+
+  Users.findUserBy({ username })
+    .first()
+    .then(user => {
+      if (user && bcryptjs.compareSync(password, user.password)) {
+        const token = generateToken(user)
+        res.status(200).json({
+          message: `Welcome ${user.username}`,
+          token
+        })
+      } else {
+        res.status(401).json({
+          message: 'Credentials do not match.'
+        })
+      }
+    })
+    .catch(err => {
+      res.status(401).json(err)
+    })
 }
 
 function getJokes(req, res) {
