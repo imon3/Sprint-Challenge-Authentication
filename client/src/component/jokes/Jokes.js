@@ -1,7 +1,12 @@
 import React from 'react';
 
 const Jokes = props => {
-    console.log(props)
+
+    return (
+        <div>
+            {props.joke.joke}
+        </div>
+    )
 }
 
 export default Jokes;
